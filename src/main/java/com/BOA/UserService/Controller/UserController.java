@@ -1,8 +1,4 @@
 package com.BOA.UserService.Controller;
-
-
-
-
 import com.BOA.UserService.Models.User;
 import com.BOA.UserService.Service.UserServiceImpl;
 import org.apache.logging.log4j.LogManager;

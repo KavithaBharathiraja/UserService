@@ -9,44 +9,59 @@ version = '0.0.1-SNAPSHOT'
 
 java {
 	toolchain {
-		languageVersion = JavaLanguageVersion.of(17)
+		languageVersion = JavaLanguageVersion.of(17)  // Ensure Java 17 is used
 	}
 }
-
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
-}
-bootJar {
-	archiveFileName = 'userservice_separate.jar'}
-
 
 repositories {
-	mavenCentral()
+	mavenCentral()  // Use Maven Central for dependency resolution
 }
 
 ext {
-	set('springCloudVersion', "2024.0.0")
+	springCloudVersion = "2024.0.0"  // Spring Cloud version for dependency management
 }
 
 dependencies {
+	// Spring Boot dependencies
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	compileOnly 'org.projectlombok:lombok'
+
+	// Lombok for boilerplate code reduction
+	annotationProcessor 'org.projectlombok:lombok'  // Only needed for annotation processing
+	compileOnly 'org.projectlombok:lombok'  // Ensure Lombok is in compile-only classpath
+
+	// Spring DevTools for hot reloading
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	runtimeOnly 'mysql:mysql-connector-java:8.0.30'  // Specify the correct version for MySQL
-	annotationProcessor 'org.projectlombok:lombok'
+
+	// MySQL Connector as a runtime dependency (using a stable version)
+	runtimeOnly 'mysql:mysql-connector-java'
+
+	// Testing dependencies
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	// Optional: Mocking with Mockito (if needed)
+	testImplementation 'org.mockito:mockito-core:4.6.1'
 }
 
 dependencyManagement {
 	imports {
+		// Spring Cloud dependency management
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
 	}
 }
 
 tasks.named('test') {
+	// Enable JUnit Platform for testing
 	useJUnitPlatform()
+}
+
+bootJar {
+	archiveFileName = 'userservice_separate.jar'  // Custom jar file name
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor  // Ensuring Lombok annotations are processed correctly
+	}
 }
