@@ -34,7 +34,8 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
 	// MySQL Connector as a runtime dependency (using a stable version)
-	runtimeOnly 'mysql:mysql-connector-java'
+	runtimeOnly 'mysql:mysql-connector-java:8.0.33'
+
 
 	// Testing dependencies
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -57,7 +58,7 @@ tasks.named('test') {
 }
 
 bootJar {
-	archiveFileName = 'userservice_separate.jar'  // Custom jar file name
+	archiveFileName = 'userservice_sql.jar'  // Custom jar file name
 }
 
 configurations {

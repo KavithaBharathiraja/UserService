@@ -24,7 +24,7 @@ public class User {
     @Column(unique = true, nullable = false, length = 100)
     private String email;
 
-    @Column(length = 15)
+    @Column(length = 15, nullable =true)
     private String phoneNumber;
 
     @Column(name = "created_at", updatable = false)

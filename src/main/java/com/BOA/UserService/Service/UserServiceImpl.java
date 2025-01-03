@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -24,13 +25,10 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    @Transactional
     public User createUser(User user) {
-
-        // Log that a user is being created
-        logger.info("Creating a new user: {}", user.getUsername());
-
-        // Save the user and return it
+        if (user.getUsername() == null || user.getEmail() == null) {
+            throw new IllegalArgumentException("Username and email are required");
+        }
         return userRepository.save(user);
     }
 
@@ -55,7 +53,17 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(user);
     }
 
-
+    @Override
+    @Transactional
+    public User getUserById(Long id) {
+        Optional<User> user = userRepository.findById(id);
+        if (user.isPresent()) {
+            return user.get();
+        } else {
+            logger.error("User with ID {} not found", id);
+            return null;
+        }
+    }
 
     @Override
     @Transactional
