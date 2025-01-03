@@ -15,3 +15,8 @@
 2025-01-03T01:27:29.472-08:00  WARN 52848 --- [UserService] [http-nio-8081-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource user.]
 2025-01-03T01:27:29.643-08:00 ERROR 52848 --- [UserService] [http-nio-8081-exec-8] c.B.U.Controller.GlobalExceptionHandler  : Internal Server Error: No static resource favicon.ico.
 2025-01-03T01:27:29.644-08:00  WARN 52848 --- [UserService] [http-nio-8081-exec-8] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2025-01-03T01:39:56.425-08:00  INFO 52848 --- [UserService] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-03T01:39:56.464-08:00  INFO 52848 --- [UserService] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-01-03T01:39:56.510-08:00  INFO 52848 --- [UserService] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-03T01:39:56.628-08:00  INFO 52848 --- [UserService] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-01-03T01:39:56.892-08:00  INFO 52848 --- [UserService] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
