@@ -16,7 +16,9 @@ java {
 repositories {
 	mavenCentral()  // Use Maven Central for dependency resolution
 }
-
+bootJar {
+	archiveFileName = 'user.jar'
+}
 ext {
 	springCloudVersion = "2024.0.0"  // Spring Cloud version for dependency management
 }
@@ -57,9 +59,7 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
-bootJar {
-	archiveFileName = 'userservice_sql.jar'  // Custom jar file name
-}
+
 
 configurations {
 	compileOnly {
